@@ -1,0 +1,11 @@
+﻿@model SitecoreMvcDemo.Web.Models.Carousel.CarouselViewModel
+<div class="carousel">
+    @foreach (var carouselSlide in Model.CarouselSlideItems)
+    {
+        <div class="carousel-slide">
+            <h1>@Html.Sitecore().Field("Header", carouselSlide)</h1>
+            <p>@Html.Sitecore().Field("SubHead", carouselSlide)</p>
+            @Html.Sitecore().Field("Background", carouselSlide)
+        </div>
+    }
+</div>

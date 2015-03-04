@@ -1,0 +1,26 @@
+﻿.page-editor {}
+
+.page-editor-tabs {
+    margin-bottom: -1px;
+}
+.page-editor-tabs a {
+    display: inline-block;
+    padding: 10px;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    border-bottom: 1px solid gray;
+}
+.page-editor-tabs a.selected,
+.page-editor-tabs a:hover {
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-top: 2px solid #F90;
+    border-bottom: 1px solid white;
+}
+.page-editor-tab-content {
+    display: none;
+}
+.page-editor-tab-content.selected {
+    border-top: 1px solid gray;
+    display: block;
+}

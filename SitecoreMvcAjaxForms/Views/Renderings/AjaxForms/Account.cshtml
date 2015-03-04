@@ -1,0 +1,5 @@
+﻿@model SitecoreMvcAjaxForms.Models.AccountViewModel
+<div id="account">
+    <h2>@Html.Sitecore().Field("Title", Model.Item)</h2>
+    <p>@Html.Sitecore().Field("Content", Model.Item)</p>
+</div>

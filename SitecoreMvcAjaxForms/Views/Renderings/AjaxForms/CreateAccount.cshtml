@@ -1,0 +1,23 @@
+﻿@using SitecoreMvcAjaxForms.Extensions
+@model SitecoreMvcAjaxForms.Models.CreateAccountViewModel
+<div id="createAccount">
+    <h2>@Html.Sitecore().Field("Title", Model.Item)</h2>
+    <p>@Html.Sitecore().Field("Content", Model.Item)</p>
+    @using (Html.BeginForm("CreateAccount", "MultiPageForm"))
+    {
+        @Html.FormData(Model)
+        <p>
+            @Html.TextBoxFor(m => m.Email)
+            @Html.ValidationMessageFor(m => m.Email)
+        </p>
+        <p>
+            @Html.TextBoxFor(m => m.Password)
+            @Html.ValidationMessageFor(m => m.Password)
+        </p>
+        <p>
+            @Html.TextBoxFor(m => m.PasswordConfirm)
+            @Html.ValidationMessageFor(m => m.PasswordConfirm)
+        </p>
+        <input type="submit" value="Submit"/>
+    }
+</div>
