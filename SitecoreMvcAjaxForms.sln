@@ -5,6 +5,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{CD16388E-D33
 	ProjectSection(SolutionItems) = preProject
 		Lib\Sitecore.Kernel.dll = Lib\Sitecore.Kernel.dll
 		Lib\Sitecore.Mvc.dll = Lib\Sitecore.Mvc.dll
+		Lib\Sitecore.Mvc.ExperienceEditor.dll = Lib\Sitecore.Mvc.ExperienceEditor.dll
 		Lib\System.Web.Mvc.dll = Lib\System.Web.Mvc.dll
 		Lib\System.Web.WebPages.dll = Lib\System.Web.WebPages.dll
 	EndProjectSection

@@ -12,7 +12,7 @@
     };
 
     var containerSelector = function() {
-        return '#multiStepFormContainer';
+        return '#ajaxContainer';
     };
 
     var pageEditorMode = function() {

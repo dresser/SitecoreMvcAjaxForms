@@ -48,6 +48,10 @@
       <HintPath>..\Lib\Sitecore.Mvc.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Sitecore.Mvc.ExperienceEditor">
+      <HintPath>..\Lib\Sitecore.Mvc.ExperienceEditor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -77,7 +81,7 @@
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Extensions\AjaxExtensions.cs" />
     <Compile Include="Extensions\ItemExtensions.cs" />
-    <Compile Include="Extensions\PlaceholderExtensions.cs" />
+    <Compile Include="Extensions\SitecoreHelperExtensions.cs" />
     <Compile Include="Models\AccountViewModel.cs" />
     <Compile Include="Models\CreateAccountViewModel.cs" />
     <Compile Include="Models\AjaxResult.cs" />
@@ -86,12 +90,19 @@
     <Compile Include="Models\AjaxContainer.cs" />
     <Compile Include="Models\ViewModelBase.cs" />
     <Compile Include="Mvc\CustomModelBinderProvider.cs" />
+    <Compile Include="Mvc\Helpers\SitecoreAjaxHelper.cs" />
+    <Compile Include="Mvc\HtmlHelperExtensions.cs" />
+    <Compile Include="Mvc\Pipelines\Response\RenderPlaceholder\PerformAjaxPlaceholderRendering.cs" />
     <Compile Include="Mvc\ViewModelModelBinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\PageEditor.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="App_Config\Include\Sitecore.MvcAjaxPlaceholder.config" />
+    <None Include="App_Config\Include\Sitecore.Mvc.config" />
+    <None Include="App_Config\Include\Sitecore.MvcExperienceEditor.config" />
+    <Content Include="App_Config\Include\Mvc.RenderPlaceholder.config.default" />
     <None Include="Properties\PublishProfiles\Publish to Sitecore Webroot.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Global.asax" />
@@ -104,10 +115,14 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\MultiStepForms.js" />
+    <Content Include="Scripts\AjaxForms.js" />
     <Content Include="Scripts\PageEditor.js" />
     <Content Include="Views\Web.config" />
-    <None Include="Web.config" />
+    <Content Include="Views\Renderings\AjaxForms\AjaxContainer_2.cshtml" />
+    <Content Include="Views\Renderings\Sample\StandardPage.cshtml" />
+    <None Include="Web.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Views\Layouts\AjaxLayout.cshtml" />
     <Content Include="Views\Renderings\AjaxForms\AjaxContainer.cshtml" />
     <Content Include="Views\Renderings\AjaxForms\Login.cshtml" />
@@ -151,6 +166,9 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>TIME /T</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
