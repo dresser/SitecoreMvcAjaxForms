@@ -1,0 +1,7 @@
+﻿<mvc.renderPlaceholder patch:source="Sitecore.Mvc.config">
+<processor type="Sitecore.Mvc.Pipelines.Response.RenderPlaceholder.InitializeProfiling, Sitecore.Mvc"/>
+<processor type="Sitecore.Mvc.Pipelines.Response.RenderPlaceholder.EnterPlaceholderContext, Sitecore.Mvc"/>
+<processor type="Sitecore.Mvc.ExperienceEditor.Pipelines.Response.RenderPlaceholder.AddWrapper, Sitecore.Mvc.ExperienceEditor" patch:source="Sitecore.MvcExperienceEditor.config"/>
+<processor type="Sitecore.Mvc.Pipelines.Response.RenderPlaceholder.PerformRendering, Sitecore.Mvc"/>
+<processor type="Sitecore.Mvc.Pipelines.Response.RenderPlaceholder.RenderAddedContent, Sitecore.Speak.Mvc" patch:source="Sitecore.Speak.Mvc.config"/>
+</mvc.renderPlaceholder>
