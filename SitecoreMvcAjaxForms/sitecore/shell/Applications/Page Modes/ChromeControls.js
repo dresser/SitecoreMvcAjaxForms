@@ -29,7 +29,10 @@
     this.ancestorList.hide().prependTo(document.body);
 
     this.moreCommands = $sc("<div class='scChromeDropDown " + cssClass + "'></div>");
-    this.moreCommands.hide().prependTo(document.body);            
+    this.moreCommands.hide().prependTo(document.body);
+
+    this.customDropDowns = $sc("<div class='scChromeDropDown " + cssClass + "'></div>");
+    this.customDropDowns.hide().prependTo(document.body);
     
     this.positioningManager = new Sitecore.PageModes.PositioningManager();    
     Sitecore.PageModes.PageEditor.onWindowScroll.observe($sc.proxy(this.scrollHandler, this));
@@ -98,6 +101,13 @@
     }  
   },
 
+  hideCustomDropDowns:function() {
+      if (this.customDropDowns.is(":visible")) {
+          this.customDropDowns.hide();
+          this.commands.find(".scChromeCustomDropDowns").removeClass("scDdExpanded");
+      }
+  },
+
   observe: function(eventName, handler) {
     this.eventDispatcher.bind(Sitecore.PageModes.ChromeControls.eventNameSpace + eventName, handler);
   },
@@ -123,6 +133,13 @@
       this.commands.find(".scChromeMoreSection").addClass("scDdExpanded");      
     }  
   },
+
+    showCustomDropDowns: function() {
+        if (!this.customDropDowns.is(":visible")) {
+            this.customDropDowns.show();
+            this.commands.find(".scChromeCustomDropDowns").addClass("scDdExpanded");
+        }
+    },
 
   renderAncestors: function() {  
     this.ancestorList.update("");
@@ -320,7 +337,32 @@
     
     return tag;
   },
-   
+
+    renderCustomDropDownButton: function() {
+      //renders the dropdown button(s) in the toolbar
+      var template = [
+          "<a href='#' class='scChromeCommand scChromeDropDownButton' title='Change Component'>",
+          "  <span class='scChromeCommandText'>Change Component</span>",
+          "  <img src='/sitecore/shell/Themes/Standard/Images/menudropdown_black9x8.png' alt='Change Component' />",
+          "</a>"
+      ].join("\n");
+
+      var tag = $sc.util().renderTemplate("sc-renderCustomDropDownButton", template, {
+          texts: Sitecore.PageModes.Texts
+      });
+
+      tag.click($sc.proxy(function(e) {
+          e.stop();
+          var sender = $sc(e.currentTarget);
+
+          var offset = sender.offset();
+          var height = sender.outerHeight();
+          this.showCustomDropDownList({ top: offset.top + height, left: offset.left });
+      }, this));
+
+      return tag;
+  },
+
   renderTitle: function() {
     var container = $sc("<div class='scChromeName'></div>");
 
@@ -369,8 +411,8 @@
 
     var hasCommands = false;
     var commandsCounter = 0;
-    
-    var commonCommands = [], commands = [], stickyCommands = [];     
+
+    var commonCommands = [], commands = [], stickyCommands = [], dropDownCommands = [];     
     $sc.each(this.chrome.commands(), function () { 
       if (this.type == "common") {
         commonCommands.push(this);
@@ -381,6 +423,11 @@
         stickyCommands.push(this);
         return;
       }
+
+        if (this.type == "dropdown") {
+            dropDownCommands.push(this);
+            return;
+        }
         
       commands.push(this);        
     });
@@ -457,6 +504,13 @@
       commandsRow.append(this.renderMoreSection());
     }
 
+      /*Additional dropdown buttons*/
+    $sc.each(dropDownCommands, $sc.proxy(function (i, c) {
+        this.customDropDowns.append(c);
+    }, this));
+    commandsRow.append(this.renderSeparator());
+    commandsRow.append(this.renderCustomDropDownButton());
+
     if (commandsRow.children().length > 0) {
       commandsRow.append($sc("<div class='scClearBoth'></div>"));      
     }   
@@ -514,6 +568,14 @@
     var fixedPosition = this.positioningManager.getFixedElementPosition(position.top, position.left, this.moreCommands);    
     this.moreCommands.css({ top: fixedPosition.top + 'px', left: fixedPosition.left + 'px' });       
     this.hideAncestors();
+  },
+
+  showCustomDropDownList: function (position) {
+      this.showCustomDropDowns();
+      this.triggerEvent("dropdownshown");
+      var fixedPosition = this.positioningManager.getFixedElementPosition(position.top, position.left, this.moreCommands);
+      this.customDropDowns.css({ top: fixedPosition.top + 'px', left: fixedPosition.left + 'px' });
+      this.hideAncestors();
   },
  
   _addCommand: function(command, chrome, index) {
