@@ -117,8 +117,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\AjaxForms.js" />
     <Content Include="Scripts\PageEditor.js" />
-    <Content Include="sitecore\shell\Applications\Page Modes\ChromeControls.js" />
-    <None Include="sitecore\shell\Applications\Page Modes\ChromeControls.js.original" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Renderings\AjaxForms\AjaxContainer_2.cshtml" />
     <Content Include="Views\Renderings\Sample\StandardPage.cshtml" />
