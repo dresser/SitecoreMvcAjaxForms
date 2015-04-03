@@ -4,6 +4,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{CD16388E-D337-4D80-A836-E38E903D3EE6}"
 	ProjectSection(SolutionItems) = preProject
 		Lib\Sitecore.Client.dll = Lib\Sitecore.Client.dll
+		Lib\Sitecore.ExperienceEditor.dll = Lib\Sitecore.ExperienceEditor.dll
 		Lib\Sitecore.Kernel.dll = Lib\Sitecore.Kernel.dll
 		Lib\Sitecore.Mvc.dll = Lib\Sitecore.Mvc.dll
 		Lib\Sitecore.Mvc.ExperienceEditor.dll = Lib\Sitecore.Mvc.ExperienceEditor.dll

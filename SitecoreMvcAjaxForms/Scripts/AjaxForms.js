@@ -59,4 +59,4 @@
             return true;
         });
 
-})(jQuery);
+})(jQuery.noConflict());

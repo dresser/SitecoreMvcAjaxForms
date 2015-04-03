@@ -1,4 +1,5 @@
-﻿using System.Collections.Specialized;
+﻿using System;
+using System.Collections.Specialized;
 using System.Web;
 using Sitecore;
 using Sitecore.Data;
@@ -9,6 +10,7 @@ using Sitecore.Web.UI.Sheer;
 
 namespace SitecoreMvcAjaxForms.Commands
 {
+    [Serializable]
     public class SelectEditingComponent : Sitecore.Shell.Applications.WebEdit.Commands.WebEditCommand
     {
         public override void Execute(Sitecore.Shell.Framework.Commands.CommandContext context)
@@ -72,7 +74,14 @@ namespace SitecoreMvcAjaxForms.Commands
                     queryParams.Add("renderingId", args.Parameters["renderingId"]);
                     string url = "/sitecore/client/your%20apps/ajaxplaceholder/ajaxplaceholderdialog?sc_lang=en&" +
                                  queryParams.ToString();
-                    SheerResponse.ShowModalDialog(url, "100", "200", string.Empty, true);
+                    SheerResponse.ShowModalDialog(new ModalDialogOptions(url)
+                    {
+                        Width = "500px",
+                        Height = "400px",
+                        Response = true,
+                        ForceDialogSize = true,
+                        Maximizable = false
+                    });
                         args.WaitForPostBack();
                     //}
                 }
@@ -116,6 +125,12 @@ namespace SitecoreMvcAjaxForms.Commands
             }
             else
                 SheerResponse.SetAttribute("scLayoutDefinition", "value", string.Empty);
+        }
+
+        public void SetSelectedRendering(Guid renderingId)
+        {
+            System.Web.HttpContext.Current.Session["RenderingId"] = renderingId;
+            //ControllerContext.HttpContext.Session["RenderingId"] = renderingId;
         }
     }
 }

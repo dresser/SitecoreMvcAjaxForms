@@ -5,6 +5,7 @@
         {
             initialize: function(attributes) {
                 this._super();
+                console.log('hello');
                 var that = this;
                 var pageItemId = Sitecore.Helpers.url.getQueryParameters(window.location.href)['pageItemId'];
                 var deviceId = Sitecore.Helpers.url.getQueryParameters(window.location.href)['deviceId'];
@@ -16,7 +17,7 @@
                 $.ajax({
                     url: "/mvcdemo/ajaxplaceholder/GetPlaceholderRenderings" + query,
                     type: "GET",
-                    success: function (data) {
+                    success: function(data) {
                         console.log(data);
                         that.set("json", data);
                     }
@@ -33,6 +34,10 @@
                     newArray[i + 1] = json[i];
                 newArray[0] = data;
                 this.set("json", newArray);
+            },
+            selectForEdit: function (renderingId) {
+                var app = this;
+                alert('rendering ' + renderingId + ' selected');
             }
         }
     );
