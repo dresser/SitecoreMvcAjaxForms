@@ -4,11 +4,28 @@
         initialized: function ()
         {
             // our work goes here
-            console.log('PageCode referenced script has loaded');
+            console.log('Dialog.js:initialized()');
+            var items = this.JsonList.get('items');
+            console.log(items);
+            this.JsonList.set('selectedItemId', '');
         },
 
-        doStuff: function () {
-            console.log('doStuff was called');
+        rowSelected: function () {
+            var app = this;
+            console.log(app.JsonList);
+            console.log('row selected');
+        },
+
+        submitDialog: function () {
+            var app = this;
+            var selRenderingId = app.JsonList.get('selectedItemId');
+            $.ajax({
+                url: "/mvcdemo/ajaxplaceholder/SetSelectedRendering?renderingReferenceId=" + selRenderingId,
+                type: "POST",
+                success: function (data) {
+                    console.log(data);
+                }
+            });
         }
  
     });

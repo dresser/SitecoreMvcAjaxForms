@@ -5,7 +5,7 @@
         {
             initialize: function(attributes) {
                 this._super();
-                console.log('hello');
+                console.log('JsonDataSource.js:initialize()');
                 var that = this;
                 var pageItemId = Sitecore.Helpers.url.getQueryParameters(window.location.href)['pageItemId'];
                 var deviceId = Sitecore.Helpers.url.getQueryParameters(window.location.href)['deviceId'];
