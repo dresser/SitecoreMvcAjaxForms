@@ -5,6 +5,7 @@
         {
             // our work goes here
             console.log('Dialog.js:initialized()');
+            console.log(Sitecore.Pipelines);
             var items = this.JsonList.get('items');
             console.log(items);
             this.JsonList.set('selectedItemId', '');
@@ -18,6 +19,7 @@
 
         submitDialog: function () {
             var app = this;
+
             var selRenderingId = app.JsonList.get('selectedItemId');
             $.ajax({
                 url: "/mvcdemo/ajaxplaceholder/SetSelectedRendering?renderingReferenceId=" + selRenderingId,
