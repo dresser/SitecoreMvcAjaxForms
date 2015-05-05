@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D38F7873-B547-4A74-B0BF-09E60177A5B9}</ProjectGuid>
+    <ProjectGuid>{F72829F3-3C09-4981-B81C-8FBAE5EAEC77}</ProjectGuid>
     <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SitecoreMvcAjaxForms</RootNamespace>
-    <AssemblyName>SitecoreMvcAjaxForms</AssemblyName>
+    <RootNamespace>SitecoreMvcAjaxPlaceholder</RootNamespace>
+    <AssemblyName>SitecoreMvcAjaxPlaceholder</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -83,71 +83,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\ModelBinderConfig.cs" />
-    <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AjaxFormsController.cs" />
-    <Compile Include="ExtensionMethods.cs" />
-    <Compile Include="Extensions\AjaxExtensions.cs" />
-    <Compile Include="Extensions\ItemExtensions.cs" />
-    <Compile Include="Extensions\ItemLayoutExtensions.cs" />
-    <Compile Include="Extensions\SitecoreHelperExtensions.cs" />
-    <Compile Include="Models\AccountViewModel.cs" />
-    <Compile Include="Models\CreateAccountViewModel.cs" />
-    <Compile Include="Models\AjaxResult.cs" />
-    <Compile Include="Models\IViewModel.cs" />
-    <Compile Include="Models\LoginViewModel.cs" />
-    <Compile Include="Models\AjaxContainer.cs" />
-    <Compile Include="Models\ViewModelBase.cs" />
-    <Compile Include="Mvc\CustomModelBinderProvider.cs" />
-    <Compile Include="Mvc\ViewModelModelBinder.cs" />
+    <Compile Include="Commands\SelectEditingComponent.cs" />
+    <Compile Include="Controllers\AjaxPlaceholderController.cs" />
+    <Compile Include="Mvc\Helpers\SitecoreAjaxHelper.cs" />
+    <Compile Include="Mvc\HtmlHelperExtensions.cs" />
+    <Compile Include="Mvc\Pipelines\Response\RenderPlaceholder\PerformAjaxPlaceholderRendering.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\PageEditor.css" />
-    <Content Include="Content\Site.css" />
-    <None Include="App_Config\Include\Sitecore.Mvc.config" />
-    <None Include="App_Config\Include\Sitecore.MvcExperienceEditor.config" />
-    <None Include="App_Config\Include\Mvc.RenderPlaceholder.config.default" />
-    <None Include="Properties\PublishProfiles\Publish to Sitecore Webroot.pubxml" />
-    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
-    <Content Include="Global.asax" />
-    <Content Include="Scripts\jquery-1.8.2.js" />
-    <Content Include="Scripts\jquery-1.8.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\AjaxForms.js" />
-    <Content Include="Scripts\PageEditor.js" />
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\Renderings\AjaxForms\AjaxContainer_2.cshtml" />
-    <Content Include="Views\Renderings\Sample\StandardPage.cshtml" />
-    <None Include="Web.config">
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Content Include="Sitecore\Shell\Client\Your Apps\AjaxPlaceholder\Dialog.js" />
+    <Content Include="Sitecore\Shell\Client\Your Apps\AjaxPlaceholder\Renderings\JsonDataSource.js" />
+    <None Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Include\Sitecore.MvcAjaxPlaceholder.config">
       <SubType>Designer</SubType>
-    </None>
-    <Content Include="Views\Layouts\AjaxLayout.cshtml" />
-    <Content Include="Views\Renderings\AjaxForms\AjaxContainer.cshtml" />
-    <Content Include="Views\Renderings\AjaxForms\Login.cshtml" />
-    <Content Include="Views\Renderings\AjaxForms\Account.cshtml" />
-    <Content Include="Views\Renderings\AjaxForms\CreateAccount.cshtml" />
-    <Content Include="Views\Renderings\Sample\SampleInnerView.cshtml" />
-    <Content Include="Views\Renderings\Sample\SampleView.cshtml" />
-    <Content Include="Views\Layouts\SampleMvcLayout.cshtml" />
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\" />
+    <Content Include="Sitecore\Shell\Client\Your Apps\AjaxPlaceholder\Renderings\JsonDataSource.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SitecoreMvcAjaxPlaceholder\SitecoreMvcAjaxPlaceholder.csproj">
-      <Project>{f72829f3-3c09-4981-b81c-8fbae5eaec77}</Project>
-      <Name>SitecoreMvcAjaxPlaceholder</Name>
-    </ProjectReference>
+    <None Include="Properties\PublishProfiles\LocalPublish.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -165,9 +129,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51917</DevelopmentServerPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:61380/</IISUrl>
+          <IISUrl>http://localhost:53366/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -177,9 +141,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <PropertyGroup>
-    <PostBuildEvent>TIME /T</PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

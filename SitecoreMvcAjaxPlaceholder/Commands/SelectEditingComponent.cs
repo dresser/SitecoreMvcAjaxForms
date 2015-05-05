@@ -8,7 +8,7 @@ using Sitecore.Diagnostics;
 using Sitecore.Web;
 using Sitecore.Web.UI.Sheer;
 
-namespace SitecoreMvcAjaxForms.Commands
+namespace SitecoreMvcAjaxPlaceholder.Commands
 {
     [Serializable]
     public class SelectEditingComponent : Sitecore.Shell.Applications.WebEdit.Commands.WebEditCommand
@@ -76,7 +76,7 @@ namespace SitecoreMvcAjaxForms.Commands
                                  queryParams.ToString();
                     SheerResponse.ShowModalDialog(new ModalDialogOptions(url)
                     {
-                        Width = "500px",
+                        Width = "340px",
                         Height = "400px",
                         Response = true,
                         ForceDialogSize = true,
